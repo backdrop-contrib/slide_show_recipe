@@ -1,0 +1,16 @@
+{
+    "_config_name": "image.style.slideshow_image",
+    "label": "Slideshow Image",
+    "name": "slideshow_image",
+    "effects": [
+        {
+            "name": "image_scale_and_crop",
+            "data": {
+                "width": "1900",
+                "height": "500",
+                "anchor": "center-center"
+            },
+            "weight": "1"
+        }
+    ]
+}

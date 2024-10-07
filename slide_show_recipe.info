@@ -1,0 +1,10 @@
+type = module
+name = Slideshow Recipe
+description = A recipe to build a Slideshow feature on your site.
+package = Recipes
+tags[] = Recipe
+backdrop = 1.x
+
+dependencies[] = views
+dependencies[] = flexslider
+dependencies[] = flexslider_views
