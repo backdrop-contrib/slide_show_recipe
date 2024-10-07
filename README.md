@@ -1,9 +1,11 @@
 Slideshow Recipe
 ======================
 
-This module is a simple config recipe developed to help illustrated what can
-be done with a module that only contains config files and CSS. 
+This module is a simple config recipe that simply adds and updates config on your site
+to implement a simple slideshow using the Flexslider module and Flexslider views.
 
+**This recipe is still under development**, but suitable for testing and feedback. We appreciate
+your ideas and input.
 
 This recipe creates
 
@@ -36,6 +38,17 @@ Installation
 - Disabling and uninstalling this module will not delete any of the 
   configuration that this module provides, but will disable any CSS
   files that came with the recipe.
+
+After Installation
+------------------
+
+- Add a couple of "Slideshow" nodes to the site.
+
+- Add Views Slideshow block to layout. Configure Block Title Type = 'none'.
+
+NOTE: In most cases you will need to customize your layout or css to get the slideshow to span the entire width of the
+screen. Try using this block in the Top region, when using Basis as your theme to see a full width version of 
+slideshow.
 
 Uninstall or Upgrate Options
 ----------------------------
