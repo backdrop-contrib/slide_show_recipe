@@ -1,0 +1,99 @@
+<?php
+
+  function slideshow_sample_content_install() {
+
+    $module_path = backdrop_get_path('module', 'slideshow_sample_content');
+
+    // field_create_instance($instance);
+    $field_image_dir = 'public://slideshow';
+    file_prepare_directory($field_image_dir, FILE_CREATE_DIRECTORY);
+
+    $images = array(
+      'one.jpg',
+      'two.jpg',
+      'three.jpg',
+    );
+
+    $fids = [];
+
+    foreach ($images as $image_filename) {
+      $image_url = BACKDROP_ROOT . '/' . backdrop_get_path('module', 'slideshow_sample_content') . '/' . 'images/'. $image_filename;
+      $moved_file = file_unmanaged_copy($image_url, $field_image_dir);
+
+      $file = entity_create('file', array(
+        'filename' => $image_filename,
+        'uri' => $moved_file,
+        'uid' => 1,
+      ));
+
+      $file->save();
+      $fids[] = $file->fid;
+    }
+
+    // 1 - Make a slideshow node.
+    $one = file_get_contents($module_path . '/slideshow_text/one.txt');
+    $slideshow = new Node(
+      array(
+        'title' => st($one),
+        'field_slideshow_image' => array(
+          LANGUAGE_NONE => array(
+            array(
+              'fid' => $fids[0],
+            ),
+          ),
+        ),
+        'uid' => 1,
+        'status' => 1,
+        'promote' => 0,
+        'comment' => 0,
+        'type' => 'slideshow',
+      )
+    );
+    $slideshow->save();
+
+    $two = file_get_contents($module_path . '/slideshow_text/two.txt');
+    $slideshow = new Node(
+      array(
+        'title' => st($two),
+        'field_slideshow_image' => array(
+          LANGUAGE_NONE => array(
+            array(
+              'fid' => $fids[1],
+            ),
+          ),
+        ),
+        'uid' => 1,
+        'status' => 1,
+        'promote' => 0,
+        'comment' => 0,
+        'type' => 'slideshow',
+      )
+    );
+    $slideshow->save();
+
+    $three = file_get_contents($module_path . '/slideshow_text/three.txt');
+    $slideshow = new Node(
+      array(
+        'title' => st($three),
+        'field_slideshow_image' => array(
+          LANGUAGE_NONE => array(
+            array(
+              'fid' => $fids[2],
+            ),
+          ),
+        ),
+        'uid' => 1,
+        'status' => 1,
+        'promote' => 0,
+        'comment' => 0,
+        'type' => 'slideshow',
+      )
+    );
+    $slideshow->save();
+
+    $home_layout = layout_load('home');
+    $home_layout->removeBlock('094cbc03-d088-4b3c-8361-977733540ae8'); 
+    $slideshow_block = $home_layout->addBlock('views', 'slideshow-block', 'top');
+    $home_layout->save();
+    config_set('layout.layout.home', 'content.' . $slideshow_block->uuid . '.data.settings.title_display', 'none');
+  }

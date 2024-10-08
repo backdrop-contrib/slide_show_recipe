@@ -1,1 +1,47 @@
 <?php
+
+/**
+ * Implements hook_install().
+ */
+function slide_show_recipe_install() {
+  if (module_exists('css_injector')) {
+
+    $default_theme = config_get('system.core', 'theme_default');
+    
+    $css_rule = '
+    .front .l-header {
+      margin: 0;
+    }
+
+    .front .flexslider {
+      margin: 0;
+      border: none;
+    }
+
+    .front .flexslider .flex-direction-nav a:before {
+      font-size: 33px;
+    }
+    ';
+
+    $rule_themes = serialize(array($default_theme => $default_theme));
+    
+    $css_rule_entry = array(
+      'title' => 'slideshow',
+      'rule_type' => 1,
+      'rule_conditions' => '<front>',
+      'rule_themes' => $rule_themes,
+      'media' => 'all',
+      'preprocess' => 1,
+      'enabled' => 1,
+    );
+    
+    $rule_id = db_insert('css_injector_rule')
+      ->fields($css_rule_entry)
+      ->execute();
+    
+    if ($rule_id) {
+      $css_file_path = 'public://css_injector/css_injector_' . $rule_id . '.css';
+      file_unmanaged_save_data($css_rule, $css_file_path, FILE_EXISTS_REPLACE);
+    }
+  }
+}

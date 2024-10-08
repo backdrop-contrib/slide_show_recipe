@@ -22,7 +22,7 @@
         "useCSS": 1,
         "touch": 1,
         "video": 0,
-        "controlNav": "1",
+        "controlNav": "0",
         "directionNav": 1,
         "prevText": "Previous",
         "nextText": "Next",
