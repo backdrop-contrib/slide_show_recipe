@@ -4,6 +4,8 @@ Slideshow Recipe
 This module is a simple config recipe that simply adds and updates config on your site
 to implement a simple slideshow using the Flexslider module and Flexslider views.
 
+We have also added an install file to add some sample content. Please install **Slideshow Sample Content** module for this.
+
 **This recipe is still under development**, but suitable for testing and feedback. We appreciate
 your ideas and input.
 
@@ -12,6 +14,8 @@ This recipe creates
  - A Slideshow content type
  - A view using Flexslider and Flexslider Views module to display Slideshows. For the slideshow images also added an image style.
  - A Flexslider configuration file for this slideshow.
+ - Three sample slideshow content
+ - Added some CSS to look nice using CSS Injector module.
 
  While some users may be happy with the configuration of this Slideshow feature 
  exactly as defined in the recipe. We expect that most users will use 
@@ -23,7 +27,7 @@ Requirements
 
 Requires [BackdropCMS 1.20](https://github.com/backdrop/backdrop/releases/tag/1.20.0) or greater.
 
-This recipes is currently configured to use the Flexslider module 
+This recipe is currently configured to use the Flexslider module 
 to display the slideshow. You will need to enable and configure the Flexslider and Flexslider Views module to benefit from that formatting. 
 
 Installation
@@ -44,7 +48,7 @@ After Installation
 
 - Add a couple of "Slideshow" nodes to the site.
 
-- Add Views Slideshow block to layout. Configure Block Title Type = 'none'.
+- By default Slideshow block is added on the Home layout on the top region, please place it correctly for your use case.
 
 NOTE: In most cases you will need to customize your layout or css to get the slideshow to span the entire width of the
 screen. Try using this block in the Top region, when using Basis as your theme to see a full width version of 
