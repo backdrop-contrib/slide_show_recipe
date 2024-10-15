@@ -21,6 +21,7 @@ This recipe creates
  exactly as defined in the recipe. We expect that most users will use 
  this recipe as a starting point and customize it to meet their unique needs. 
 
+![Screenshot of the sample slide show content](https://github.com/backdrop-contrib/slide_show_recipe/blob/1.x-1.x/screenshots/slide-show-ss.png)
 
 Requirements
 ------------
