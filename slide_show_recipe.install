@@ -40,6 +40,9 @@ function slide_show_recipe_install() {
       ->execute();
     
     if ($rule_id) {
+      $recipe_css_dir = 'public://css_injector';
+      file_prepare_directory($recipe_css_dir, FILE_CREATE_DIRECTORY);
+
       $css_file_path = 'public://css_injector/css_injector_' . $rule_id . '.css';
       file_unmanaged_save_data($css_rule, $css_file_path, FILE_EXISTS_REPLACE);
     }
